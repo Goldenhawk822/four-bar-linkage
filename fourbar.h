@@ -24,9 +24,9 @@ public:
 	void setB1C(double, double);
 	void randomize(double);
 	//rotates the AoA1 vector by the amount theta in radians, then adjusts the position of all other vectors, will return false if an error occurs and the fourbar will revert to it's initial state
-	bool rotatebyrad(double);
+	bool rotateAoA1byrad(double);
 	//rotates the AoA1 vector by the amount theta in degrees, then adjusts the position of all other vectors, will return false if an error occurs and the fourbar will revert to it's initial state
-	bool rotatebydeg(double);
+	bool rotateAoA1bydeg(double);
 	Imag getAoA1();
 	Imag getA1C();
 	Imag getBoB1();
@@ -172,7 +172,7 @@ int min4(double a, double b, double c, double d) {
 	}
 }
 
-bool FourBar::rotatebyrad(double theta) {
+bool FourBar::rotateAoA1byrad(double theta) {
 	double offset = A1C.posrad() - A1B1.posrad();
 	Imag A = AoA1;
 	Imag B = A1B1;
@@ -239,7 +239,7 @@ bool FourBar::rotatebyrad(double theta) {
 	return false;
 }
 
-bool FourBar::rotatebydeg(double theta) {
+bool FourBar::rotateAoA1bydeg(double theta) {
 	return this->rotatebyrad(theta*3.14159 / 180);
 }
 #endif
